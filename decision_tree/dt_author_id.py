@@ -24,6 +24,14 @@ features_train = features_train[:len(features_train)/100]
 labels_train = labels_train[:len(labels_train)/100] 
 """
 
+num_feat = features_train[0]
+
+count = 0
+for item in num_feat:
+    count += 1
+
+print(count)
+
 from sklearn import tree
 
 clf = tree.DecisionTreeClassifier(min_samples_split=40)
