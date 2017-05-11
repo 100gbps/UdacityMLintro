@@ -19,13 +19,23 @@ from email_preprocess import preprocess
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
 
+"""
+features_train = features_train[:len(features_train)/100] 
+labels_train = labels_train[:len(labels_train)/100] 
+"""
 
+from sklearn import tree
 
+clf = tree.DecisionTreeClassifier(min_samples_split=40)
 
-#########################################################
-### your code goes here ###
+t0 = time()
+clf = clf.fit(features_train, labels_train)
+print "training time:", round(time()-t0, 3), "s"
 
+t1 = time()
+pred = clf.predict(features_test)
+print "prediction time:", round(time()-t1, 3), "s"
 
-#########################################################
+acc = clf.score( features_test, labels_test)
 
-
+print(acc)
