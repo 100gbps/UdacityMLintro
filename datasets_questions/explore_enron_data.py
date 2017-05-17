@@ -20,3 +20,17 @@ import pickle
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
 
+print "Number of features per person: ", \
+      sum(len(v) for v in enron_data.itervalues())/len(enron_data)
+
+print "Number of people: ", len(enron_data)
+
+##for key, values in enron_data.items():
+##    print values
+
+n=0
+for key, values in enron_data.items():
+    if values.get('poi') == True:
+        n += 1
+
+print "numbers of POI: ", n
